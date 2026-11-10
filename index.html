@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TIMELINE AGENCY</title>
+<meta name="description" content="TIMELINE AGENCY｜Marketing, PR, Branding">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<style>
+  :root { --ink:#231916; --sub:#7a716d; --line:#d9d3ce; --bg:#faf8f6; --err:#a33b2b; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--ink);
+    font-family:"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.8;
+  }
+  .hero {
+    min-height:88vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:48px; padding:64px 24px; text-align:center;
+  }
+  .logo { width:min(420px, 78vw); height:auto; display:block; }
+  .rule { width:40px; height:1px; background:var(--ink); opacity:.4; }
+  address { font-style:normal; line-height:2; font-size:14px; letter-spacing:.06em; }
+  address .en { color:var(--sub); font-size:12px; letter-spacing:.08em; }
+  .to-contact {
+    font-size:12px; letter-spacing:.25em; color:var(--ink); text-decoration:none;
+    border:1px solid var(--ink); padding:12px 32px; transition:background .3s, color .3s;
+  }
+  .to-contact:hover { background:var(--ink); color:var(--bg); }
+
+  .contact { max-width:560px; margin:0 auto; padding:32px 24px 120px; }
+  .contact h2 { font-size:13px; font-weight:400; letter-spacing:.3em; text-align:center; margin-bottom:8px; }
+  .contact .lead { font-size:12px; color:var(--sub); text-align:center; margin-bottom:48px; letter-spacing:.05em; }
+  .field { margin-bottom:28px; }
+  label { display:block; font-size:12px; letter-spacing:.1em; margin-bottom:6px; }
+  label .req { color:var(--sub); font-size:10px; margin-left:6px; }
+  input, textarea {
+    width:100%; font:inherit; font-size:15px; color:var(--ink);
+    background:transparent; border:none; border-bottom:1px solid var(--line);
+    padding:8px 2px; border-radius:0; outline:none; transition:border-color .3s;
+  }
+  textarea { min-height:160px; resize:vertical; border:1px solid var(--line); padding:12px; }
+  input:focus, textarea:focus { border-color:var(--ink); }
+  .hp { position:absolute; left:-9999px; }
+  button {
+    display:block; margin:40px auto 0; font:inherit; font-size:12px; letter-spacing:.3em;
+    background:var(--ink); color:var(--bg); border:none; padding:14px 56px; cursor:pointer; transition:opacity .3s;
+  }
+  button:disabled { opacity:.5; cursor:default; }
+  .status { text-align:center; font-size:13px; margin-top:24px; min-height:1.8em; }
+  .status.err { color:var(--err); }
+  footer { text-align:center; font-size:10px; letter-spacing:.15em; color:var(--sub); padding:0 0 32px; }
+  .nb { display:inline-block; }
+  @media (max-width:600px) {
+    .hero { min-height:100svh; gap:40px; padding:48px 20px; }
+    .logo { width:84vw; }
+    address { font-size:13px; letter-spacing:.04em; }
+    address .en { font-size:11px; letter-spacing:.04em; display:inline-block; margin-top:8px; line-height:1.7; }
+    .to-contact { padding:14px 40px; }
+    .contact { padding:24px 20px 96px; }
+    .contact .lead { margin-bottom:36px; }
+    input, textarea { font-size:16px; } /* iPhoneで入力時に拡大されないように */
+    button { width:100%; padding:16px; }
+  }
+  @media (prefers-reduced-motion:no-preference) {
+    .hero > * { animation:fade 1.2s ease both; }
+    @keyframes fade { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    html { scroll-behavior:smooth; }
+  }
+</style>
+</head>
+<body>
+<section class="hero">
+  <h1><img class="logo" src="img/logo.svg" alt="TIMELINE AGENCY" width="191" height="36"></h1>
+  <div class="rule" aria-hidden="true"></div>
+  <address>
+    〒107-0061<br>
+    <span class="nb">東京都港区北青山1-3-1</span> <span class="nb">アールキューブ青山3階</span><br>
+    <span class="en">3F R-Cube Aoyama, 1-3-1 Kita-Aoyama, Minato-ku, Tokyo 107-0061, Japan</span>
+  </address>
+  <a class="to-contact" href="#contact">CONTACT</a>
+</section>
+
+<section class="contact" id="contact">
+  <h2>CONTACT</h2>
+  <p class="lead">お問い合わせは下記フォームよりお送りください。</p>
+  <form id="form" novalidate>
+    <div class="field">
+      <label for="company">会社名</label>
+      <input id="company" name="会社名" autocomplete="organization">
+    </div>
+    <div class="field">
+      <label for="name">お名前<span class="req">必須</span></label>
+      <input id="name" name="お名前" autocomplete="name" required>
+    </div>
+    <div class="field">
+      <label for="email">メールアドレス<span class="req">必須</span></label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label for="message">お問い合わせ内容<span class="req">必須</span></label>
+      <textarea id="message" name="お問い合わせ内容" required></textarea>
+    </div>
+    <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" id="submit">送信する</button>
+    <p class="status" id="status" role="status"></p>
+  </form>
+</section>
+
+<footer>© TIMELINE AGENCY INC.</footer>
+
+<script>
+/* ===== 送信先の設定（Googleフォーム） =====
+   GOOGLE_FORM_ID … フォームURLの /d/e/ と /viewform の間の文字列
+   ENTRY … 各質問の entry.数字（事前入力リンクから取得） */
+var GOOGLE_FORM_ID = '1FAIpQLScghIgUwIINLcJxc_HbzNbq3njdAj0PASt-1QD1fC5YNlrKaw';
+var ENTRY = {
+  company: 'entry.1232290775',
+  name:    'entry.542033580',
+  email:   'entry.122247803',
+  message: 'entry.1815166967'
+};
+(function () {
+  var form = document.getElementById('form');
+  var btn = document.getElementById('submit');
+  var status = document.getElementById('status');
+  function v(id) { return document.getElementById(id).value.trim(); }
+  function show(msg, isErr) { status.textContent = msg; status.className = 'status' + (isErr ? ' err' : ''); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form.website.value) return; /* スパム対策：機械だけが入力する隠し欄 */
+    var req = form.querySelectorAll('[required]');
+    for (var i = 0; i < req.length; i++) {
+      if (!req[i].value.trim()) { req[i].focus(); show('必須項目をご入力ください。', true); return; }
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) { document.getElementById('email').focus(); show('メールアドレスの形式をご確認ください。', true); return; }
+    if (GOOGLE_FORM_ID === 'FORM_ID_HERE') { show('送信先が未設定のため、現在は送信できません。', true); return; }
+    var data = new URLSearchParams();
+    data.append(ENTRY.company, v('company'));
+    data.append(ENTRY.name, v('name'));
+    data.append(ENTRY.email, v('email'));
+    data.append(ENTRY.message, v('message'));
+    btn.disabled = true; show('送信しています…');
+    fetch('https://docs.google.com/forms/d/e/' + GOOGLE_FORM_ID + '/formResponse', {
+      method: 'POST', mode: 'no-cors', body: data
+    })
+      .then(function () { form.reset(); show('送信しました。お問い合わせありがとうございます。'); })
+      .catch(function () { show('送信できませんでした。通信環境をご確認のうえ、再度お試しください。', true); })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
